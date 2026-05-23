@@ -1,1 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<title>Ksatak — Deja de discutir por quién limpia.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --coral:#FF5C3A;
+  --coral-dark:#E64722;
+  --bg:#FFF7F3;
+  --card:#FFFFFF;
+  --ink:#171415;
+  --muted:#5A5451; /* mejor contraste */
+  --line:#E9DDD7;
+  --teal:#00C2A8;
+  --gold:#FFB830;
+  --shadow:0 20px 60px rgba(0,0,0,.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+  backdrop-filter:blur(18px);
+  background:rgba(255,247,243,.88);
+  border-bottom:1px solid rgba(0,0,0,.05);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 40px;
+}
+
+.logo{
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:24px;
+  text-decoration:none;
+}
+
+.logo .k{color:var(--coral)}
+.logo .t{color:var(--ink)}
+
+.nav-right{display:flex;align-items:center;gap:18px}
+
+.nav-mini{font-size:13px;color:var(--muted)}
+
+.nav-btn{
+  background:var(--coral);
+  color:#fff;
+  border:none;
+  padding:12px 22px;
+  border-radius:999px;
+  font-weight:800;
+  font-family:'Nunito',sans-serif;
+  cursor:pointer;
+  transition:.18s;
+  text-decoration:none;
+}
+
+.nav-btn:hover{transform:translateY(-2px);background:var(--coral-dark)}
+
+/* FOCUS STATES (accesibilidad real) */
+a:focus-visible, button:focus-visible, input:focus-visible{
+  outline:3px solid rgba(255,92,58,.35);
+  outline-offset:3px;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  padding:140px 24px 80px;
+}
+
+.hero-wrap{
+  max-width:1240px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:60px;
+  align-items:center;
+}
+
+.launch-badge{
+  display:inline-flex;
+  gap:10px;
+  background:rgba(255,92,58,.08);
+  color:var(--coral);
+  border:1px solid rgba(255,92,58,.16);
+  padding:10px 16px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:28px;
+}
+
+.hero h1{
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:clamp(52px,8vw,92px);
+  line-height:.95;
+  letter-spacing:-4px;
+  margin-bottom:26px;
+}
+
+.hero h1 .coral{color:var(--coral);display:block}
+.hero h1 .ink{color:var(--ink);display:block}
+
+.hero-sub{
+  max-width:620px;
+  font-size:21px;
+  line-height:1.6;
+  color:var(--muted);
+  margin-bottom:34px;
+}
+
+/* FORM (mejor semántica) */
+.waitlist{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+
+.waitlist form{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  width:100%;
+}
+
+.waitlist input{
+  flex:1;
+  min-width:260px;
+  padding:18px 20px;
+  border-radius:18px;
+  border:2px solid transparent;
+  background:#fff;
+  font-size:15px;
+  box-shadow:var(--shadow);
+}
+
+.waitlist input.error{
+  border-color:#ff4d4d;
+}
+
+.cta-btn{
+  border:none;
+  background:var(--coral);
+  color:#fff;
+  padding:18px 28px;
+  border-radius:18px;
+  font-weight:800;
+  font-size:15px;
+  font-family:'Nunito',sans-serif;
+  cursor:pointer;
+}
+
+.beta-note{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.beta-note strong{color:var(--ink)}
+
+/* TRUST */
+.trust{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:26px;
+}
+
+.trust-item{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.06);
+  padding:10px 16px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+}
+
+/* CTA FINAL */
+.big-cta{
+  background:var(--coral);
+  border-radius:40px;
+  padding:70px 40px;
+  text-align:center;
+}
+
+.big-cta h2{
+  color:#fff;
+  font-family:'Nunito',sans-serif;
+  font-size:clamp(34px,5vw,62px);
+  margin-bottom:18px;
+}
+
+.big-cta p{
+  color:rgba(255,255,255,.85);
+  max-width:650px;
+  margin:auto auto 36px;
+  line-height:1.7;
+}
+
+/* FOOTER */
+footer{
+  padding:50px 24px;
+  text-align:center;
+  color:var(--muted);
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a class="logo" href="#"><span class="k">kasa</span><span class="t">tak</span></a>
+
+  <div class="nav-right">
+    <div class="nav-mini">347 personas en lista de espera</div>
+    <a href="#join" class="nav-btn">Entrar en beta →</a>
+  </div>
+</nav>
+
+<section class="hero">
+
+  <div class="hero-wrap">
+
+    <div>
+
+      <div class="launch-badge">
+        🔥 Beta privada · 250 plazas · Pro gratis 1 año
+      </div>
+
+      <h1>
+        <span class="coral">Deja de discutir</span>
+        <span class="ink">por quién limpia.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Convierte las tareas del hogar en un sistema de puntos con rankings, rachas y recompensas compartidas sincronizado con tu calendario.
+      </p>
+
+      <div class="waitlist" id="join">
+
+        <form id="waitlistForm">
+          <label for="email" style="display:none;">Email</label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="tu@email.com"
+            required
+          >
+
+          <button class="cta-btn" type="submit">
+            Unirme a la beta (gratis)
+          </button>
+        </form>
+
+      </div>
+
+      <div class="beta-note">
+        <strong>Los primeros 250 usuarios</strong> obtienen Kasatak Pro gratis durante 1 año.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Kasatak · Tu casa, tu juego.
+</footer>
+
+<script>
+
+const form = document.getElementById('waitlistForm');
+const input = document.getElementById('email');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const value = input.value.trim();
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!regex.test(value)) {
+    input.classList.add('error');
+    setTimeout(() => input.classList.remove('error'), 1500);
+    return;
+  }
+
+  alert('✅ Estás dentro de la beta privada');
+  form.reset();
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    const target = document.querySelector(anchor.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+</script>
+
+</body>
+</html>
